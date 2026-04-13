@@ -1492,3 +1492,128 @@ body::before {
   .hero-buttons { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; }
 }
+
+/* ========================================
+   EXTRA STYLES — RG Gamers v2
+   ======================================== */
+
+/* Card detail button */
+.card-detail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(0,195,255,0.08);
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.card-detail-btn:hover {
+  background: var(--neon-blue);
+  color: var(--bg-dark);
+}
+
+/* How-to extract section */
+.how-to-extract {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.how-to-extract h3 {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--neon-blue);
+  margin-bottom: 1rem;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.step-num {
+  width: 28px; height: 28px;
+  background: var(--neon-green);
+  color: var(--bg-dark);
+  border-radius: 50%;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Trending badge on detail */
+.trending-badge-detail {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--neon-pink);
+  color: var(--bg-dark);
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+
+/* Admin URL input highlight */
+.url-input-note {
+  font-size: 0.78rem;
+  color: var(--neon-blue);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Hamburger active */
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Admin form extra */
+.admin-page { padding: 2rem; }
+
+/* Pixeldrain badge */
+.pd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0,195,255,0.08);
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Game file info 4 cols */
+.game-file-info.four-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 600px) {
+  .game-file-info.four-col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
