@@ -9,24 +9,24 @@
 // =========================================
 
 const DEFAULT_GAMES = [
-   {
-    id: 'processing-i3',
-    title: 'Processing I3 3.5.4',
-    category: 'Other',
-    description: 'Processing is a Java-based creative coding software. Version 3.5.4 — perfect for beginners learning programming and creative visual coding.',
+ {
+    id: 'processing-3-5-4',
+    title: 'Processing 3.5.4 (i3)',
+    category: 'Simulator',
+    description: 'A flexible software sketchbook and a language for learning how to code within the context of the visual arts. Built on Java, it is highly efficient for data processing and visual synthesis.',
     size: '111 MB',
-    image: 'images/processing.jpg',
-    file: 'https://pixeldrain.com/u/4Bk9SWp6',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Processing_2021_logo.svg/512px-Processing_2021_logo.svg.png',
+    downloadUrl: 'https://pixeldrain.com/u/example_processing', // Replace 'example_processing' with your actual link ID
     sysReq: {
-      os: 'Windows 7/8/10/11',
-      cpu: 'Intel Core i3 or equivalent',
-      ram: '2 GB',
-      gpu: 'Any',
-      storage: '200 MB'
+      os: 'Windows 7+, Linux, or macOS',
+      cpu: 'Intel Core i3-3220 / AMD Phenom II X4',
+      ram: '4 GB',
+      gpu: 'OpenGL 2.1 compatible graphics card',
+      storage: '500 MB'
     },
-    trending: false,
-    downloads: 0,
-    uploadDate: '2025-04-13'
+    trending: true,
+    downloads: 1200,
+    uploadDate: '2026-04-14'
   },
   {
     id: 'gta5',
