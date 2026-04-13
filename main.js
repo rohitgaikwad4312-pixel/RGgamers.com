@@ -10,6 +10,25 @@
 
 // Default games to pre-populate the site
 const DEFAULT_GAMES = [
+   {
+    id: 'processing-i3',
+    title: 'Processing I3 3.5.4',
+    category: 'Other',
+    description: 'Processing is a Java-based creative coding software. Version 3.5.4 — perfect for beginners learning programming and creative visual coding.',
+    size: '111 MB',
+    image: 'images/processing.jpg',
+    file: 'https://pixeldrain.com/u/4Bk9SWp6',
+    sysReq: {
+      os: 'Windows 7/8/10/11',
+      cpu: 'Intel Core i3 or equivalent',
+      ram: '2 GB',
+      gpu: 'Any',
+      storage: '200 MB'
+    },
+    trending: false,
+    downloads: 0,
+    uploadDate: '2025-04-13'
+  },
   {
     id: 'gta5',
     title: 'Grand Theft Auto V',
