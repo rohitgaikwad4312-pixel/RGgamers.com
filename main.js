@@ -778,3 +778,65 @@ document.addEventListener('DOMContentLoaded', function() {
   if (pageId === 'admin')      initAdminPage();
   if (pageId === 'contact')    initContactForm();
 });
+// ADMIN PANEL LOGIC
+const form = document.getElementById("adminForm");
+const gamesList = document.getElementById("adminGamesList");
+
+if (form) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const game = {
+      title: document.getElementById("gameTitle").value,
+      category: document.getElementById("gameCategory").value,
+      size: document.getElementById("gameSize").value,
+      download: document.getElementById("gameDownloadUrl").value,
+      image: document.getElementById("gameImageUrl").value,
+      desc: document.getElementById("gameDesc").value,
+      trending: document.getElementById("gameTrending").checked
+    };
+
+    // Save in browser
+    let games = JSON.parse(localStorage.getItem("games")) || [];
+    games.push(game);
+    localStorage.setItem("games", JSON.stringify(games));
+
+    alert("Game Added Successfully ✅");
+
+    form.reset();
+    loadGames();
+  });
+}
+
+// LOAD GAMES
+function loadGames() {
+  if (!gamesList) return;
+
+  let games = JSON.parse(localStorage.getItem("games")) || [];
+  gamesList.innerHTML = "";
+
+  games.forEach((g, index) => {
+    gamesList.innerHTML += `
+      <div style="background:#111;padding:15px;margin-bottom:10px;border-radius:8px">
+        <h3>${g.title}</h3>
+        <p>${g.category} | ${g.size}</p>
+        <a href="${g.download}" target="_blank">⬇ Download</a>
+        <br><br>
+        <button onclick="deleteGame(${index})">❌ Delete</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("statTotal").innerText = games.length;
+}
+
+// DELETE GAME
+function deleteGame(index) {
+  let games = JSON.parse(localStorage.getItem("games")) || [];
+  games.splice(index, 1);
+  localStorage.setItem("games", JSON.stringify(games));
+  loadGames();
+}
+
+// LOAD ON PAGE OPEN
+loadGames();
