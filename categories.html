@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Categories - RG Gamers</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="categories">
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo"><span class="logo-icon">🎮</span>RG <span>Gamers</span></a>
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="navSearchInput" placeholder="Search games...">
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="categories.html" class="active">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admin.html" class="btn-admin-nav">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span>Categories</span></div>
+      <h1>📂 Game <span style="color:var(--neon-green)">Categories</span></h1>
+      <p>Browse games by genre — find exactly what you want to play</p>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="categories-grid" id="categoriesGrid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">🎮 RG <span>Gamers</span></div>
+        <p class="footer-desc">Your number one source for free PC game downloads.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Home</a></li>
+          <li><a href="games.html">🎮 All Games</a></li>
+          <li><a href="admin.html">⚙️ Admin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>RG Gamers</span> 🎮</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop">⬆</button>
+  <script src="../js/main.js"></script>
+</body>
+</html>

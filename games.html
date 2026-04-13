@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and download all PC games on RG Gamers in WinRAR format via Pixeldrain.">
+  <title>All Games - RG Gamers</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="games">
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo"><span class="logo-icon">🎮</span>RG <span>Gamers</span></a>
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="navSearchInput" placeholder="Search games...">
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="games.html" class="active">Games</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admin.html" class="btn-admin-nav">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span>All Games</span></div>
+      <h1>🎮 All <span style="color:var(--neon-green)">Games</span></h1>
+      <p>Browse our full collection of PC games — all hosted on Pixeldrain in WinRAR format</p>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="search-filter-bar">
+          <div class="search-input-wrap">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="Search games by name or description...">
+          </div>
+          <select class="filter-select" id="categoryFilter">
+            <option value="All">📂 All Categories</option>
+            <option value="Action">⚔️ Action</option>
+            <option value="Racing">🏎️ Racing</option>
+            <option value="Shooting">🔫 Shooting</option>
+            <option value="Adventure">🗺️ Adventure</option>
+            <option value="Sports">⚽ Sports</option>
+            <option value="Strategy">♟️ Strategy</option>
+            <option value="RPG">🧙 RPG</option>
+            <option value="Horror">👻 Horror</option>
+            <option value="Fighting">🥊 Fighting</option>
+            <option value="Puzzle">🧩 Puzzle</option>
+            <option value="Simulator">🎮 Simulator</option>
+            <option value="Other">🌐 Other</option>
+          </select>
+        </div>
+        <div class="games-grid" id="gamesGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">🎮 RG <span>Gamers</span></div>
+        <p class="footer-desc">Your number one source for free PC game downloads.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Home</a></li>
+          <li><a href="games.html">🎮 All Games</a></li>
+          <li><a href="categories.html">📂 Categories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">ℹ️ About</a></li>
+          <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>RG Gamers</span> — Rohit Gaikwad 🎮</p>
+    </div>
+  </footer>
+
+  <div class="download-overlay" id="downloadOverlay">
+    <div class="download-modal">
+      <div class="download-icon">⬇️</div>
+      <h3>Preparing Download</h3>
+      <p id="dlGameName">Game Name</p>
+      <p style="color:var(--neon-yellow);font-family:var(--font-mono);font-size:0.85rem;margin-bottom:0.5rem">File Size: <span id="dlGameSize">-</span></p>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="progress-text">Redirecting to Pixeldrain...</div>
+    </div>
+  </div>
+
+  <button class="scroll-top" id="scrollTop">⬆</button>
+  <div class="toast" id="toast"><span class="toast-icon">✅</span><span class="toast-text"></span></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>
