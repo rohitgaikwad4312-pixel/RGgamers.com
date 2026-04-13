@@ -150,10 +150,7 @@ const DEFAULT_GAMES = [
 // =========================================
 
 function getGames() {
-  const stored = localStorage.getItem('rg_games');
-  if (!stored) {
-    // First time: save defaults
-    localStorage.setItem('rg_games', JSON.stringify(DEFAULT_GAMES));
+   localStorage.setItem('rg_games', JSON.stringify(DEFAULT_GAMES));
     return DEFAULT_GAMES;
   }
   return JSON.parse(stored);
