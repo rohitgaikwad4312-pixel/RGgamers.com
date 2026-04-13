@@ -35,7 +35,7 @@ const DEFAULT_GAMES = [
     description: 'Experience the sprawling open world of Los Santos. Complete missions, explore the city, and cause chaos in one of the best open-world games ever made.',
     size: '65 GB',
     image: 'https://upload.wikimedia.org/wikipedia/en/a/a5/GTA_V.png',
-    downloadUrl: 'https://pixeldrain.com/u/example1',
+    downloadUrl: 'https://pixeldrain.com/u/example_processing',
     sysReq: {
       os: 'Windows 10 64-bit',
       cpu: 'Intel Core i5-3470 / AMD X8 FX-8350',
