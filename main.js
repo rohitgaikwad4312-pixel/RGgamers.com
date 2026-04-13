@@ -8,15 +8,14 @@
 // GAMES DATABASE (stored in localStorage)
 // =========================================
 
-// Default games to pre-populate the site
 const DEFAULT_GAMES = [
-   {
+  {
     id: 'processing-i3',
     title: 'Processing I3 3.5.4',
     category: 'Other',
     description: 'Processing is a Java-based creative coding software. Version 3.5.4 — perfect for beginners learning programming and creative visual coding.',
     size: '111 MB',
-    image: 'images/processing.jpg',
+    image: 'images/placeholder.jpg',
     file: 'https://pixeldrain.com/u/4Bk9SWp6',
     sysReq: {
       os: 'Windows 7/8/10/11',
@@ -150,9 +149,9 @@ const DEFAULT_GAMES = [
 // =========================================
 
 function getGames() {
-   localStorage.setItem('rg_games', JSON.stringify(DEFAULT_GAMES));
-    return DEFAULT_GAMES;
-  }
+  localStorage.setItem('rg_games', JSON.stringify(DEFAULT_GAMES));
+  return DEFAULT_GAMES;
+}
 
 function saveGames(games) {
   localStorage.setItem('rg_games', JSON.stringify(games));
@@ -160,7 +159,7 @@ function saveGames(games) {
 
 function addGame(game) {
   const games = getGames();
-  games.unshift(game); // Add new game to top
+  games.unshift(game);
   saveGames(games);
 }
 
@@ -203,7 +202,6 @@ function createGameCard(game) {
   `;
 }
 
-// Format numbers like 1000 -> 1K
 function formatNumber(n) {
   if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
   return n;
@@ -229,7 +227,6 @@ function startDownload(gameId) {
   const game = getGameById(gameId);
   if (!game) return;
 
-  // Show download modal
   const overlay = document.getElementById('downloadOverlay');
   const dlName = document.getElementById('dlGameName');
   const dlSize = document.getElementById('dlGameSize');
@@ -239,17 +236,14 @@ function startDownload(gameId) {
     if (dlSize) dlSize.textContent = game.size;
     overlay.classList.add('active');
 
-    // After 3 seconds, start actual download
     setTimeout(() => {
       overlay.classList.remove('active');
-      // Increment download count
       const games = getGames();
       const idx = games.findIndex(g => g.id === gameId);
       if (idx !== -1) {
         games[idx].downloads = (games[idx].downloads || 0) + 1;
         saveGames(games);
       }
-      // Trigger file download
       triggerFileDownload(game);
       showToast(`✅ ${game.title} download started!`);
     }, 3000);
@@ -269,7 +263,6 @@ function triggerFileDownload(game) {
     a.click();
     document.body.removeChild(a);
   }
-}
 }
 
 function closeDownloadModal() {
@@ -376,7 +369,6 @@ function initAdminForm() {
   const form = document.getElementById('adminForm');
   if (!form) return;
 
-  // Drag & drop styling for file boxes
   document.querySelectorAll('.file-upload-box').forEach(box => {
     const input = box.querySelector('input[type="file"]');
     box.addEventListener('dragover', e => {
@@ -420,7 +412,6 @@ function submitGame() {
   const imageFile = document.getElementById('gameImage').files[0];
   const rarFile = document.getElementById('gameFile').files[0];
 
-  // System requirements
   const os = document.getElementById('sysOS').value.trim();
   const cpu = document.getElementById('sysCPU').value.trim();
   const ram = document.getElementById('sysRAM').value.trim();
@@ -432,7 +423,6 @@ function submitGame() {
     return;
   }
 
-  // Create object URL for local image preview
   const imageUrl = imageFile ? URL.createObjectURL(imageFile) : 'images/placeholder.jpg';
   const fileUrl = rarFile ? rarFile.name : '';
 
@@ -522,7 +512,6 @@ function loadGameDetail() {
     return;
   }
 
-  // Update page title
   document.title = `${game.title} - RG Gamers`;
 
   document.getElementById('gameDetailContent').innerHTML = `
@@ -583,7 +572,6 @@ function loadGameDetail() {
 function initHomePage() {
   const games = getGames();
 
-  // Featured game (first trending or first)
   const featured = games.find(g => g.trending) || games[0];
   const featuredEl = document.getElementById('featuredGame');
   if (featuredEl && featured) {
@@ -608,11 +596,9 @@ function initHomePage() {
     `;
   }
 
-  // Trending games
   const trending = games.filter(g => g.trending).slice(0, 4);
   renderGamesGrid('trendingGames', trending);
 
-  // Recent games (by date, newest first)
   const recent = [...games]
     .sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate))
     .slice(0, 8);
@@ -659,7 +645,6 @@ function initCategoriesPage() {
 // =========================================
 
 function initGamesPage() {
-  // Check for ?category= in URL
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('category');
   if (cat) {
@@ -671,7 +656,6 @@ function initGamesPage() {
   const filtered = filterGames();
   renderGamesGrid('gamesGrid', filtered);
 
-  // Wire up search and filter inputs
   const searchInput = document.getElementById('searchInput');
   const catFilter = document.getElementById('categoryFilter');
 
@@ -698,7 +682,7 @@ function initContactForm() {
 }
 
 // =========================================
-// NAV SEARCH (HOME PAGE TOP BAR)
+// NAV SEARCH
 // =========================================
 
 function initNavSearch() {
@@ -717,12 +701,10 @@ function initNavSearch() {
 // =========================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Always init these
   initScrollTop();
   initMobileNav();
   initNavSearch();
 
-  // Detect which page we are on
   const body = document.body;
   const pageId = body.getAttribute('data-page');
 
@@ -733,7 +715,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (pageId === 'admin')      initAdminForm();
   if (pageId === 'contact')    initContactForm();
 
-  // Handle URL search param on games page
   if (pageId === 'games') {
     const params = new URLSearchParams(window.location.search);
     const search = params.get('search');
@@ -744,7 +725,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Close download modal when clicking outside
   const overlay = document.getElementById('downloadOverlay');
   if (overlay) {
     overlay.addEventListener('click', function(e) {
