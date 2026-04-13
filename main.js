@@ -264,7 +264,7 @@ function startDownload(gameId) {
 function triggerFileDownload(game) {
   // Create a temporary anchor and click it
   const a = document.createElement('a');
-  a.href = '../' + game.file; // Relative path from pages/
+ a.href = game.file.startsWith('http') ? game.file : '../' + game.file; // Relative path from pages/
   a.download = game.title.replace(/\s+/g, '_') + '.rar';
   document.body.appendChild(a);
   a.click();
