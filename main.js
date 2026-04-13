@@ -259,13 +259,19 @@ function startDownload(gameId) {
 }
 
 function triggerFileDownload(game) {
-  // Create a temporary anchor and click it
-  const a = document.createElement('a');
- a.href = game.file.startsWith('http') ? game.file : '../' + game.file; // Relative path from pages/
-  a.download = game.title.replace(/\s+/g, '_') + '.rar';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  if (game.file.startsWith('http')) {
+    // External link (Pixeldrain etc.) — open in new tab
+    window.open(game.file, '_blank');
+  } else {
+    // Local file — download directly
+    const a = document.createElement('a');
+    a.href = '../' + game.file;
+    a.download = game.title.replace(/\s+/g, '_') + '.rar';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+}
 }
 
 function closeDownloadModal() {
