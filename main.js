@@ -153,8 +153,6 @@ function getGames() {
    localStorage.setItem('rg_games', JSON.stringify(DEFAULT_GAMES));
     return DEFAULT_GAMES;
   }
-  return JSON.parse(stored);
-}
 
 function saveGames(games) {
   localStorage.setItem('rg_games', JSON.stringify(games));
