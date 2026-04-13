@@ -1,88 +1,81 @@
-# 🎮 RG GAMERS — Complete Website
-
-A fully functional PC game download website built with HTML, CSS, and JavaScript.
+# 🎮 RG GAMERS — Website v2
+**Owner: Rohit Gaikwad**
+**Email: rohit.gaikwad4312@gmail.com**
+**Contact: 9975994312**
 
 ---
 
 ## 📁 FOLDER STRUCTURE
 
 ```
-RG-Gamers/
-│
+RGGamers/
 ├── index.html              ← HOME PAGE (open this first)
-│
 ├── css/
-│   └── style.css           ← All styling (dark gaming theme)
-│
+│   └── style.css           ← All styling
 ├── js/
-│   └── main.js             ← All JavaScript (games data, download, search)
-│
+│   └── main.js             ← All JavaScript
 ├── images/
-│   ├── placeholder.jpg     ← Default image when no cover is set
-│   ├── gta5.jpg            ← Add your game cover images here
-│   ├── minecraft.jpg
-│   └── (more game images)
-│
-├── game-files/
-│   ├── GTA5.rar            ← Put your actual .rar game files here
-│   └── (more game files)
-│
+│   └── placeholder.jpg     ← Default cover image
 └── pages/
-    ├── games.html          ← All Games list page
-    ├── game-detail.html    ← Individual game page (auto-loads from URL)
+    ├── games.html          ← All Games list
+    ├── game-detail.html    ← Individual game page
     ├── categories.html     ← Browse by category
-    ├── about.html          ← About RG Gamers
+    ├── about.html          ← About page
     ├── contact.html        ← Contact form
-    └── admin.html          ← ADMIN UPLOAD PANEL ⭐
+    └── admin.html          ← ⭐ ADMIN UPLOAD PANEL
 ```
 
 ---
 
-## 🚀 HOW TO RUN ON YOUR LAPTOP
+## 🚀 HOW TO RUN
 
-### Method 1 — Simple (Double Click)
-1. Open the `RG-Gamers` folder
-2. Double-click `index.html`
-3. It will open in your browser ✅
+### Method 1 — GitHub Pages (Recommended)
+1. Upload this entire folder to your GitHub repository
+2. Go to Settings → Pages → Deploy from main branch
+3. Your site will be live at: `https://yourusername.github.io/reponame/`
 
-> ⚠️ Note: Some features like file downloads work best with Method 2 below.
+### Method 2 — VS Code Live Server
+1. Open this folder in VS Code
+2. Install the "Live Server" extension
+3. Right-click `index.html` → "Open with Live Server"
 
-### Method 2 — Using VS Code (Recommended)
-1. Install **Visual Studio Code** (free at code.visualstudio.com)
-2. Install the **Live Server** extension in VS Code
-3. Open the `RG-Gamers` folder in VS Code
-4. Right-click `index.html` → "Open with Live Server"
-5. Website opens at `http://127.0.0.1:5500` ✅
-
-### Method 3 — Using Python (if installed)
-1. Open a terminal/command prompt
-2. Navigate to the RG-Gamers folder: `cd path/to/RG-Gamers`
-3. Run: `python -m http.server 8000`
-4. Open browser: `http://localhost:8000` ✅
+### Method 3 — Python
+```
+cd RGGamers
+python -m http.server 8000
+```
+Then open `http://localhost:8000`
 
 ---
 
-## 🎮 HOW TO ADD YOUR GTA 5 FILE
+## ☁️ HOW TO ADD A GAME (PIXELDRAIN WORKFLOW)
 
-### Step 1 — Add the game image
-- Put a GTA 5 cover image (jpg/png) in the `images/` folder
-- Name it: `gta5.jpg`
+### Step 1 — Upload to Pixeldrain
+1. Go to **https://pixeldrain.com** and sign in (or create free account)
+2. Upload your `.rar` game file
+3. After upload, click **Share** or copy the file URL
+4. You'll get a link like: `https://pixeldrain.com/u/xxxxxxxx`
 
-### Step 2 — Add the RAR file
-- Put your `GTA5.rar` file inside the `game-files/` folder
-- The path should be: `RG-Gamers/game-files/GTA5.rar`
+### Step 2 — Add to Website via Admin Panel
+1. Open `pages/admin.html` in your browser
+2. Fill in:
+   - **Game Title** (e.g. GTA 5)
+   - **Category** (e.g. Action)
+   - **File Size** (e.g. 65 GB)
+   - **Pixeldrain URL** ← paste the link from Step 1
+   - **Cover Image URL** ← optional, paste any image URL
+   - **Description** and **System Requirements**
+3. Click **"Add Game to RG Gamers"** ✅
 
-### Step 3 — The game is already in the database!
-GTA 5 is already pre-loaded in the website with all details.
-The download button will automatically look for `game-files/GTA5.rar`.
+The game appears instantly on the website. When users click Download,
+they'll be redirected to Pixeldrain to download the file.
 
-### Step 4 — To add MORE games via Admin Panel
-1. Go to `pages/admin.html` in your browser
-2. Fill in the game title, category, description, file size
-3. Upload a cover image
-4. Upload the .rar file
-5. Click "Upload Game" ✅
-The game page is auto-created and appears in the games list immediately!
+---
+
+## ✏️ EDIT EXISTING GAME LINKS
+
+In the Admin Panel, every game has an **"✏️ Edit Link"** button.
+Click it to update the Pixeldrain URL for any game at any time.
 
 ---
 
@@ -92,64 +85,34 @@ The game page is auto-created and appears in the games list immediately!
 |------|------|-------------|
 | Home | `index.html` | Featured, trending, recent games |
 | All Games | `pages/games.html` | Full list with search & filter |
-| Game Detail | `pages/game-detail.html?id=gta5` | Individual game page |
+| Game Detail | `pages/game-detail.html?id=xxx` | Individual game page |
 | Categories | `pages/categories.html` | Browse by genre |
 | About | `pages/about.html` | About the website |
-| Contact | `pages/contact.html` | Contact/game request form |
-| **Admin** | `pages/admin.html` | **Upload & manage games** |
+| Contact | `pages/contact.html` | Contact / game request form |
+| **Admin** | **`pages/admin.html`** | **Upload & manage games** |
 
 ---
 
-## ⚙️ HOW IT WORKS (For Beginners)
+## ⚙️ HOW IT WORKS
 
-**Game Database:** All games are stored in your browser's `localStorage`.
-This means the games save automatically and stay there even after closing the browser.
-
-**Adding Games:** Use the Admin Panel to upload games. The website creates
-the game page automatically — you don't need to write any code!
-
-**Search:** The search bar on the Games page searches game titles and descriptions.
-
-**Filter:** Use the category dropdown to show only games from a specific genre.
-
-**Download:** When you click Download, a loading animation plays for 3 seconds,
-then the .rar file starts downloading from the `game-files/` folder.
+- **Game Database:** Stored in the browser's `localStorage` — games save automatically and persist between visits.
+- **Downloads:** When a user clicks Download, they're redirected to the Pixeldrain link you set in the Admin panel.
+- **Search & Filter:** Real-time search by title/description, filter by category.
+- **Pixeldrain:** All actual game files are hosted on Pixeldrain — the website just stores the links.
 
 ---
 
 ## 🎨 CUSTOMIZATION
 
-### Change the website name:
-Search for "RG Gamers" in the HTML files and replace with your name.
+### Change website name/owner:
+Search for "RG Gamers" in HTML files to replace, and "Rohit Gaikwad" for owner info.
 
 ### Change colors:
-Open `css/style.css` and find the `:root` section at the top.
-Change `--neon-green`, `--neon-blue`, `--neon-pink` to your preferred colors.
-
-### Add more categories:
-In `pages/admin.html` and `pages/games.html`, find the `<select>` with categories
-and add more `<option>` tags.
+Open `css/style.css`, find the `:root` section, and change:
+- `--neon-green` → primary accent color
+- `--neon-blue` → secondary accent
+- `--neon-pink` → admin/alert color
 
 ---
 
-## 📱 COMPATIBILITY
-
-- ✅ Google Chrome
-- ✅ Mozilla Firefox
-- ✅ Microsoft Edge
-- ✅ Safari
-- ✅ Mobile browsers
-- ✅ Works offline (after first load)
-
----
-
-## 🛠️ REQUIREMENTS
-
-- No server needed for basic browsing
-- For downloads to work: run via Live Server or Python http.server
-- WinRAR required by users to extract downloaded files
-- Internet needed only for Google Fonts (optional — works without it)
-
----
-
-Built with ❤️ for RG Gamers — A student gaming project.
+Built with ❤️ for RG Gamers — Rohit Gaikwad
