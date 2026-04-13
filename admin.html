@@ -2,64 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RG Gamers Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
+  <title>Admin Panel - RG Gamers</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body data-page="admin">
 
-  <h1 style="text-align:center;">🎮 RG Gamers Admin Panel</h1>
+  <nav class="navbar">
+    <a href="../index.html" class="logo"><span class="logo-icon">🎮</span>RG <span>Gamers</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="admin.html" class="btn-admin-nav active" style="background:var(--neon-pink);color:var(--bg-dark);">⚙️ Admin</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
 
-  <div style="max-width:600px;margin:auto;padding:20px;">
+  <main class="main-content">
 
-    <form id="adminForm">
+    <div class="page-header" style="background:linear-gradient(180deg,rgba(255,0,119,0.06),transparent);">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span style="color:var(--neon-pink)">Admin Panel</span></div>
+      <h1>⚙️ <span style="color:var(--neon-pink)">Admin</span> Panel</h1>
+      <p>Upload and manage games on RG Gamers · Owner: Rohit Gaikwad</p>
+    </div>
 
-      <input id="gameTitle" type="text" placeholder="Game Title" required><br><br>
+    <section class="section">
+      <div class="admin-page" style="max-width:900px;margin:0 auto">
 
-      <select id="gameCategory">
-        <option>Action</option>
-        <option>Adventure</option>
-        <option>Racing</option>
-        <option>Shooting</option>
-        <option>Other</option>
-      </select><br><br>
+        <!-- HOW TO USE PIXELDRAIN -->
+        <div style="background:rgba(0,195,255,0.05);border:1px solid rgba(0,195,255,0.3);border-radius:10px;padding:1.5rem;margin-bottom:2rem;">
+          <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-blue);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">
+            ☁️ How to Get a Pixeldrain Download Link
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;font-size:0.85rem;color:var(--text-muted);">
+            <div><strong style="color:var(--neon-blue)">Step 1</strong><br>Go to <strong>pixeldrain.com</strong> and create a free account.</div>
+            <div><strong style="color:var(--neon-blue)">Step 2</strong><br>Upload your .rar game file to Pixeldrain.</div>
+            <div><strong style="color:var(--neon-blue)">Step 3</strong><br>Click "Share" on the uploaded file — copy the link (e.g. https://pixeldrain.com/u/xxxxxxxx).</div>
+            <div><strong style="color:var(--neon-blue)">Step 4</strong><br>Paste that link in the "Pixeldrain Download URL" field below.</div>
+          </div>
+        </div>
 
-      <input id="gameSize" type="text" placeholder="File Size (e.g. 111 MB)" required><br><br>
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:2.5rem;">
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-green);" id="statTotal">0</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Games</div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-blue);" id="statDownloads">0</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Downloads</div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-pink);" id="statTrending">0</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Trending</div>
+          </div>
+        </div>
 
-      <input id="gameDownloadUrl" type="text" placeholder="Pixeldrain Link" required><br><br>
+        <!-- UPLOAD FORM -->
+        <div class="admin-header">
+          <div style="font-size:1.5rem">📤</div>
+          <h1>Add New Game</h1>
+        </div>
 
-      <input id="gameImageUrl" type="text" placeholder="Image URL"><br><br>
+        <form class="admin-form" id="adminForm">
 
-      <textarea id="gameDesc" placeholder="Description"></textarea><br><br>
+          <!-- Game Title -->
+          <div class="form-group">
+            <label class="form-label">Game Title <span class="required">*</span></label>
+            <input type="text" id="gameTitle" class="form-input" placeholder="e.g. Grand Theft Auto V" required>
+          </div>
 
-      <h3>System Requirements</h3>
+          <!-- Category & Size Row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Category <span class="required">*</span></label>
+              <select id="gameCategory" class="form-select" required>
+                <option value="">-- Select Category --</option>
+                <option value="Action">⚔️ Action</option>
+                <option value="Racing">🏎️ Racing</option>
+                <option value="Shooting">🔫 Shooting</option>
+                <option value="Adventure">🗺️ Adventure</option>
+                <option value="Sports">⚽ Sports</option>
+                <option value="Strategy">♟️ Strategy</option>
+                <option value="RPG">🧙 RPG</option>
+                <option value="Horror">👻 Horror</option>
+                <option value="Fighting">🥊 Fighting</option>
+                <option value="Puzzle">🧩 Puzzle</option>
+                <option value="Simulator">🎮 Simulator</option>
+                <option value="Other">🌐 Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">File Size <span class="required">*</span></label>
+              <input type="text" id="gameSize" class="form-input" placeholder="e.g. 65 GB" required>
+            </div>
+          </div>
 
-      <input id="sysOS" placeholder="OS"><br><br>
-      <input id="sysCPU" placeholder="CPU"><br><br>
-      <input id="sysRAM" placeholder="RAM"><br><br>
-      <input id="sysGPU" placeholder="GPU"><br><br>
-      <input id="sysStorage" placeholder="Storage"><br><br>
+          <!-- PIXELDRAIN DOWNLOAD URL — THE KEY FIELD -->
+          <div class="form-group">
+            <label class="form-label">
+              ☁️ Pixeldrain Download URL <span class="required">*</span>
+            </label>
+            <input type="url" id="gameDownloadUrl" class="form-input"
+              placeholder="https://pixeldrain.com/u/xxxxxxxx" required
+              style="border-color:var(--neon-blue)">
+            <div class="url-input-note">
+              ℹ️ Upload your .rar file to pixeldrain.com, then paste the share link here
+            </div>
+          </div>
 
-      <label>
-        <input id="gameTrending" type="checkbox"> Trending
-      </label><br><br>
+          <!-- Cover Image URL -->
+          <div class="form-group">
+            <label class="form-label">Cover Image URL (optional)</label>
+            <input type="url" id="gameImageUrl" class="form-input" placeholder="https://example.com/game-cover.jpg">
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:5px">
+              Paste any public image URL for the game cover. Leave blank to use default.
+            </div>
+            <div id="imagePreview" style="margin-top:0.8rem;display:none">
+              <img id="previewImg" src="" alt="Preview" style="max-height:160px;border-radius:6px;border:1px solid var(--border-color);">
+            </div>
+          </div>
 
-      <button type="submit">➕ Add Game</button>
+          <!-- Description -->
+          <div class="form-group">
+            <label class="form-label">Game Description <span class="required">*</span></label>
+            <textarea id="gameDesc" class="form-textarea" placeholder="Write a short description of the game..." required></textarea>
+          </div>
 
-    </form>
+          <!-- System Requirements -->
+          <div style="background:var(--bg-dark);border:1px solid var(--border-color);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;">
+            <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-yellow);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:1px;">
+              ⚙️ System Requirements (Optional)
+            </div>
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom:1rem">
+                <label class="form-label">Operating System</label>
+                <input type="text" id="sysOS" class="form-input" placeholder="e.g. Windows 10 64-bit">
+              </div>
+              <div class="form-group" style="margin-bottom:1rem">
+                <label class="form-label">Processor (CPU)</label>
+                <input type="text" id="sysCPU" class="form-input" placeholder="e.g. Intel Core i5-3470">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group" style="margin-bottom:1rem">
+                <label class="form-label">RAM Memory</label>
+                <input type="text" id="sysRAM" class="form-input" placeholder="e.g. 8 GB">
+              </div>
+              <div class="form-group" style="margin-bottom:1rem">
+                <label class="form-label">Graphics Card (GPU)</label>
+                <input type="text" id="sysGPU" class="form-input" placeholder="e.g. NVIDIA GTX 660 2GB">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">Storage Space</label>
+              <input type="text" id="sysStorage" class="form-input" placeholder="e.g. 72 GB HDD">
+            </div>
+          </div>
 
-    <hr>
+          <!-- Trending checkbox -->
+          <div class="form-group" style="display:flex;align-items:center;gap:12px;">
+            <input type="checkbox" id="gameTrending" style="width:18px;height:18px;cursor:pointer;accent-color:var(--neon-green)">
+            <label for="gameTrending" style="cursor:pointer;font-size:0.9rem;color:var(--text-white);">
+              🔥 Mark as Trending Game
+            </label>
+          </div>
 
-    <h2>📋 Added Games</h2>
-    <div id="adminGamesList"></div>
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:15px;">
+            📤 Add Game to RG Gamers
+          </button>
+        </form>
 
-  </div>
+        <!-- Divider -->
+        <div style="border-top:1px solid var(--border-color);margin:3rem 0;position:relative;">
+          <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg-dark);padding:0 1rem;color:var(--text-muted);font-size:0.85rem;">
+            MANAGE GAMES
+          </span>
+        </div>
 
-  <!-- JS -->
+        <!-- Admin games list -->
+        <div class="admin-header">
+          <div style="font-size:1.5rem">🎮</div>
+          <h1>Your Games</h1>
+        </div>
+
+        <div id="adminGamesList"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">🎮 RG <span>Gamers</span></div>
+        <p class="footer-desc">Admin Panel — Managed by Rohit Gaikwad.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">🏠 Home</a></li>
+          <li><a href="games.html">🎮 All Games</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>RG Gamers</span> Admin Panel 🎮</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"><span class="toast-icon">✅</span><span class="toast-text"></span></div>
+  <button class="scroll-top" id="scrollTop">⬆</button>
   <script src="../js/main.js"></script>
-
 </body>
 </html>
