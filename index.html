@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="RG Gamers - Download PC games in WinRAR format. Free game downloads hosted on Pixeldrain. Fast, safe, and free.">
-  <meta name="keywords" content="PC games download, free games, WinRAR games, RG Gamers, Pixeldrain games">
+  <meta name="description" content="RG Gamers - Download PC games in WinRAR format. Free game downloads hosted on Pixeldrain, MEGA, GoFile, MediaFire and more. Fast, safe, and free.">
+  <meta name="keywords" content="PC games download, free games, WinRAR games, RG Gamers, Pixeldrain games, MEGA games download">
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow">
   <title>RG Gamers - Download PC Games Free</title>
-  <link rel="stylesheet" href="style.css">
-<script src="main.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Preload logo for fast render -->
+  <link rel="preload" href="images/logo.svg" as="image">
 </head>
 <body data-page="home">
 
   <!-- ====== NAVBAR ====== -->
   <nav class="navbar">
     <a href="index.html" class="logo">
-      <span class="logo-icon">🎮</span>
-      RG <span>Gamers</span>
+      <img src="images/logo.svg" alt="RG Gamers" class="logo-img"
+        onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+      <span id="logoFallback" style="display:none;align-items:center;gap:10px">
+        <span class="logo-icon">🎮</span>RG <span>Gamers</span>
+      </span>
     </a>
 
     <div class="nav-search">
       <span class="search-icon">🔍</span>
-      <input type="text" id="navSearchInput" placeholder="Search games...">
+      <input type="text" id="navSearchInput" placeholder="Search games..." autocomplete="off" maxlength="80">
     </div>
 
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="games.html">Games</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="admin.html" class="btn-admin-nav">⚙️ Admin</a></li>
+      <li><a href="pages/games.html">Games</a></li>
+      <li><a href="pages/categories.html">Categories</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+      <li><a href="pages/admin.html" class="btn-admin-nav">⚙️ Admin</a></li>
     </ul>
 
     <div class="hamburger" id="hamburger">
@@ -43,18 +52,29 @@
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="hero-content">
-        <div class="hero-badge">🎮 FREE PC GAME DOWNLOADS — PIXELDRAIN HOSTED</div>
+        <div class="hero-badge">🎮 FREE PC GAME DOWNLOADS — MULTI-HOST</div>
         <h1>
           Download <span class="highlight-green">PC Games</span><br>
           in <span class="highlight-blue">WinRAR</span> Format
         </h1>
         <p>
           Welcome to RG Gamers — your go-to source for free PC game downloads.
-          All games are hosted on Pixeldrain for fast, reliable downloads.
+          Games hosted on Pixeldrain, MEGA, GoFile, MediaFire and more for fast, reliable downloads.
         </p>
         <div class="hero-buttons">
           <a href="pages/games.html" class="btn btn-primary">🎮 Browse All Games</a>
           <a href="pages/categories.html" class="btn btn-outline">📂 Categories</a>
+        </div>
+
+        <!-- Supported hosts strip -->
+        <div style="display:flex;justify-content:center;gap:0.7rem;flex-wrap:wrap;margin-top:1.5rem;">
+          <span class="host-badge host-pixeldrain">☁️ Pixeldrain</span>
+          <span class="host-badge host-mega">🔷 MEGA</span>
+          <span class="host-badge host-gofile">📁 GoFile</span>
+          <span class="host-badge host-mediafire">🔥 MediaFire</span>
+          <span class="host-badge host-wetransfer">💧 WeTransfer</span>
+          <span class="host-badge host-catbox">📦 Catbox</span>
+          <span class="host-badge host-imgur">🖼️ Imgur</span>
         </div>
 
         <div class="hero-stats">
@@ -167,7 +187,7 @@
           <div class="feature-card">
             <div class="feature-icon">⬇️</div>
             <div class="feature-title">3. Click Download</div>
-            <div class="feature-text">Hit the Download button. You'll be redirected to Pixeldrain to download the .rar file.</div>
+            <div class="feature-text">Hit the Download button. You'll be redirected to the file host (Pixeldrain, MEGA, GoFile, etc.) to download the .rar file.</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">📦</div>
@@ -185,7 +205,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">🎮 RG <span>Gamers</span></div>
-        <p class="footer-desc">Your number one source for free PC game downloads in WinRAR format. Hosted on Pixeldrain. Fast, safe, and always free.</p>
+        <p class="footer-desc">Your number one source for free PC game downloads in WinRAR format. Hosted on Pixeldrain, MEGA, GoFile, MediaFire and more. Fast, safe, always free.</p>
         <p style="font-size:0.75rem;color:var(--text-muted)">Owner: Rohit Gaikwad</p>
       </div>
       <div class="footer-col">
@@ -229,12 +249,13 @@
     <div class="download-modal">
       <div class="download-icon">⬇️</div>
       <h3>Preparing Download</h3>
-      <p id="dlGameName">Game Name</p>
-      <p style="color:var(--neon-yellow);font-family:var(--font-mono);font-size:0.85rem;margin-bottom:0.5rem">
+      <p id="dlGameName" style="font-family:var(--font-title);color:var(--neon-green);margin-bottom:0.3rem">Game Name</p>
+      <p style="color:var(--neon-yellow);font-family:var(--font-mono);font-size:0.85rem;margin-bottom:0.3rem">
         File Size: <span id="dlGameSize">-</span>
       </p>
+      <p id="dlGameHost" style="font-size:0.8rem;color:var(--neon-blue);margin-bottom:0.8rem">☁️ Detecting host…</p>
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="progress-text">Redirecting to Pixeldrain...</div>
+      <div class="progress-text">Redirecting to file host...</div>
     </div>
   </div>
 
