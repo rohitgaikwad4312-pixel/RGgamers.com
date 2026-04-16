@@ -3,220 +3,272 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Security Headers via Meta -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, nofollow">
   <title>Admin Panel - RG Gamers</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body data-page="admin">
 
-  <nav class="navbar">
-    <a href="../index.html" class="logo"><span class="logo-icon">🎮</span>RG <span>Gamers</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="games.html">Games</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="admin.html" class="btn-admin-nav active" style="background:var(--neon-pink);color:var(--bg-dark);">⚙️ Admin</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </nav>
-
-  <main class="main-content">
-
-    <div class="page-header" style="background:linear-gradient(180deg,rgba(255,0,119,0.06),transparent);">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span style="color:var(--neon-pink)">Admin Panel</span></div>
-      <h1>⚙️ <span style="color:var(--neon-pink)">Admin</span> Panel</h1>
-      <p>Upload and manage games on RG Gamers · Owner: Rohit Gaikwad</p>
+  <!-- ====== ADMIN LOCK SCREEN ====== -->
+  <div id="adminLockScreen">
+    <div id="adminLockBox">
+      <span class="lock-icon">🔐</span>
+      <h2>Admin Access</h2>
+      <p>Enter your admin password to manage RG Gamers</p>
+      <input type="password" id="adminPassInput" placeholder="••••••••••••" autocomplete="off" spellcheck="false">
+      <button id="adminUnlockBtn">🔓 UNLOCK PANEL</button>
+      <div id="adminPassError"></div>
+      <p style="margin-top:1.5rem;font-size:0.75rem;color:#333">
+        🛡️ This panel is protected · Unauthorized access prohibited
+      </p>
     </div>
+  </div>
 
-    <section class="section">
-      <div class="admin-page" style="max-width:900px;margin:0 auto">
+  <!-- ====== ADMIN CONTENT (hidden until unlocked) ====== -->
+  <div id="adminContent">
 
-        <!-- HOW TO USE PIXELDRAIN -->
-        <div style="background:rgba(0,195,255,0.05);border:1px solid rgba(0,195,255,0.3);border-radius:10px;padding:1.5rem;margin-bottom:2rem;">
-          <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-blue);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">
-            ☁️ How to Get a Pixeldrain Download Link
+    <nav class="navbar">
+      <a href="../index.html" class="logo">
+        <img src="../images/logo.svg" alt="RG Gamers" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span style="display:none"><span class="logo-icon">🎮</span>RG <span>Gamers</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin.html" class="btn-admin-nav active" style="background:var(--neon-pink);color:var(--bg-dark);">⚙️ Admin</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <main class="main-content">
+
+      <div class="page-header" style="background:linear-gradient(180deg,rgba(255,0,119,0.06),transparent);">
+        <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span style="color:var(--neon-pink)">Admin Panel</span></div>
+        <h1>⚙️ <span style="color:var(--neon-pink)">Admin</span> Panel</h1>
+        <p>Upload and manage games on RG Gamers · Owner: Rohit Gaikwad</p>
+      </div>
+
+      <section class="section">
+        <div class="admin-page" style="max-width:900px;margin:0 auto">
+
+          <!-- SUPPORTED HOSTS GUIDE -->
+          <div style="background:rgba(0,195,255,0.05);border:1px solid rgba(0,195,255,0.3);border-radius:10px;padding:1.5rem;margin-bottom:2rem;">
+            <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-blue);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">
+              ☁️ Supported Download Hosts — Pick Any
+            </div>
+            <div class="host-guide-grid">
+              <div class="host-guide-item pixeldrain">☁️ Pixeldrain</div>
+              <div class="host-guide-item mega">🔷 MEGA</div>
+              <div class="host-guide-item gofile">📁 GoFile</div>
+              <div class="host-guide-item mediafire">🔥 MediaFire</div>
+              <div class="host-guide-item wetransfer">💧 WeTransfer</div>
+              <div class="host-guide-item catbox">📦 Catbox</div>
+              <div class="host-guide-item imgur">🖼️ Imgur</div>
+            </div>
+            <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;font-size:0.82rem;color:var(--text-muted);">
+              <div><strong style="color:var(--neon-blue)">Pixeldrain</strong> — pixeldrain.com/u/xxxxx</div>
+              <div><strong style="color:#d4364e">MEGA</strong> — mega.nz/file/xxxxx or mega.nz/folder/xxxx</div>
+              <div><strong style="color:#4caf50">GoFile</strong> — gofile.io/d/xxxxx</div>
+              <div><strong style="color:#ff6600">MediaFire</strong> — mediafire.com/file/xxxx</div>
+              <div><strong style="color:#0078ff">WeTransfer</strong> — wetransfer.com/downloads/xxxx</div>
+              <div><strong style="color:#9b59b6">Catbox</strong> — catbox.moe/xxxxx</div>
+              <div><strong style="color:#85bf25">Imgur</strong> — imgur.com/xxxxx (for images/covers)</div>
+            </div>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;font-size:0.85rem;color:var(--text-muted);">
-            <div><strong style="color:var(--neon-blue)">Step 1</strong><br>Go to <strong>pixeldrain.com</strong> and create a free account.</div>
-            <div><strong style="color:var(--neon-blue)">Step 2</strong><br>Upload your .rar game file to Pixeldrain.</div>
-            <div><strong style="color:var(--neon-blue)">Step 3</strong><br>Click "Share" on the uploaded file — copy the link (e.g. https://pixeldrain.com/u/xxxxxxxx).</div>
-            <div><strong style="color:var(--neon-blue)">Step 4</strong><br>Paste that link in the "Pixeldrain Download URL" field below.</div>
-          </div>
-        </div>
 
-        <!-- Stats -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:2.5rem;">
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
-            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-green);" id="statTotal">0</div>
-            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Games</div>
-          </div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
-            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-blue);" id="statDownloads">0</div>
-            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Downloads</div>
-          </div>
-          <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
-            <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-pink);" id="statTrending">0</div>
-            <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Trending</div>
-          </div>
-        </div>
-
-        <!-- UPLOAD FORM -->
-        <div class="admin-header">
-          <div style="font-size:1.5rem">📤</div>
-          <h1>Add New Game</h1>
-        </div>
-
-        <form class="admin-form" id="adminForm">
-
-          <!-- Game Title -->
-          <div class="form-group">
-            <label class="form-label">Game Title <span class="required">*</span></label>
-            <input type="text" id="gameTitle" class="form-input" placeholder="e.g. Grand Theft Auto V" required>
+          <!-- Stats -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:2.5rem;">
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+              <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-green);" id="statTotal">0</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Games</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+              <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-blue);" id="statDownloads">0</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Total Downloads</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:8px;padding:1.2rem;text-align:center;">
+              <div style="font-family:var(--font-title);font-size:1.8rem;color:var(--neon-pink);" id="statTrending">0</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px">Trending</div>
+            </div>
           </div>
 
-          <!-- Category & Size Row -->
-          <div class="form-row">
+          <!-- UPLOAD FORM -->
+          <div class="admin-header">
+            <div style="font-size:1.5rem">📤</div>
+            <h1>Add New Game</h1>
+          </div>
+
+          <form class="admin-form" id="adminForm">
+
+            <!-- Game Title -->
             <div class="form-group">
-              <label class="form-label">Category <span class="required">*</span></label>
-              <select id="gameCategory" class="form-select" required>
-                <option value="">-- Select Category --</option>
-                <option value="Action">⚔️ Action</option>
-                <option value="Racing">🏎️ Racing</option>
-                <option value="Shooting">🔫 Shooting</option>
-                <option value="Adventure">🗺️ Adventure</option>
-                <option value="Sports">⚽ Sports</option>
-                <option value="Strategy">♟️ Strategy</option>
-                <option value="RPG">🧙 RPG</option>
-                <option value="Horror">👻 Horror</option>
-                <option value="Fighting">🥊 Fighting</option>
-                <option value="Puzzle">🧩 Puzzle</option>
-                <option value="Simulator">🎮 Simulator</option>
-                <option value="Other">🌐 Other</option>
-              </select>
+              <label class="form-label">Game Title <span class="required">*</span></label>
+              <input type="text" id="gameTitle" class="form-input" placeholder="e.g. Grand Theft Auto V" required maxlength="100">
             </div>
+
+            <!-- Category & Size Row -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Category <span class="required">*</span></label>
+                <select id="gameCategory" class="form-select" required>
+                  <option value="">-- Select Category --</option>
+                  <option value="Action">⚔️ Action</option>
+                  <option value="Racing">🏎️ Racing</option>
+                  <option value="Shooting">🔫 Shooting</option>
+                  <option value="Adventure">🗺️ Adventure</option>
+                  <option value="Sports">⚽ Sports</option>
+                  <option value="Strategy">♟️ Strategy</option>
+                  <option value="RPG">🧙 RPG</option>
+                  <option value="Horror">👻 Horror</option>
+                  <option value="Fighting">🥊 Fighting</option>
+                  <option value="Puzzle">🧩 Puzzle</option>
+                  <option value="Simulator">🎮 Simulator</option>
+                  <option value="Other">🌐 Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">File Size <span class="required">*</span></label>
+                <input type="text" id="gameSize" class="form-input" placeholder="e.g. 65 GB" required maxlength="20">
+              </div>
+            </div>
+
+            <!-- DOWNLOAD URL — MULTI-HOST -->
             <div class="form-group">
-              <label class="form-label">File Size <span class="required">*</span></label>
-              <input type="text" id="gameSize" class="form-input" placeholder="e.g. 65 GB" required>
-            </div>
-          </div>
-
-          <!-- PIXELDRAIN DOWNLOAD URL — THE KEY FIELD -->
-          <div class="form-group">
-            <label class="form-label">
-              ☁️ Pixeldrain Download URL <span class="required">*</span>
-            </label>
-            <input type="url" id="gameDownloadUrl" class="form-input"
-              placeholder="https://pixeldrain.com/u/xxxxxxxx" required
-              style="border-color:var(--neon-blue)">
-            <div class="url-input-note">
-              ℹ️ Upload your .rar file to pixeldrain.com, then paste the share link here
-            </div>
-          </div>
-
-          <!-- Cover Image URL -->
-          <div class="form-group">
-            <label class="form-label">Cover Image URL (optional)</label>
-            <input type="url" id="gameImageUrl" class="form-input" placeholder="https://example.com/game-cover.jpg">
-            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:5px">
-              Paste any public image URL for the game cover. Leave blank to use default.
-            </div>
-            <div id="imagePreview" style="margin-top:0.8rem;display:none">
-              <img id="previewImg" src="" alt="Preview" style="max-height:160px;border-radius:6px;border:1px solid var(--border-color);">
-            </div>
-          </div>
-
-          <!-- Description -->
-          <div class="form-group">
-            <label class="form-label">Game Description <span class="required">*</span></label>
-            <textarea id="gameDesc" class="form-textarea" placeholder="Write a short description of the game..." required></textarea>
-          </div>
-
-          <!-- System Requirements -->
-          <div style="background:var(--bg-dark);border:1px solid var(--border-color);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;">
-            <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-yellow);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:1px;">
-              ⚙️ System Requirements (Optional)
-            </div>
-            <div class="form-row">
-              <div class="form-group" style="margin-bottom:1rem">
-                <label class="form-label">Operating System</label>
-                <input type="text" id="sysOS" class="form-input" placeholder="e.g. Windows 10 64-bit">
-              </div>
-              <div class="form-group" style="margin-bottom:1rem">
-                <label class="form-label">Processor (CPU)</label>
-                <input type="text" id="sysCPU" class="form-input" placeholder="e.g. Intel Core i5-3470">
+              <label class="form-label">
+                ☁️ Download URL <span class="required">*</span>
+                <span style="font-size:0.72rem;color:var(--text-muted);font-weight:400;font-family:var(--font-body);text-transform:none;letter-spacing:0">(Pixeldrain, MEGA, GoFile, MediaFire, WeTransfer, Catbox, Imgur)</span>
+              </label>
+              <input type="url" id="gameDownloadUrl" class="form-input"
+                placeholder="https://pixeldrain.com/u/xxxxxxxx  or  https://mega.nz/file/xxxxx" required
+                style="border-color:var(--neon-blue)" autocomplete="off">
+              <!-- Live host detector -->
+              <div id="hostDetector" style="margin-top:5px;font-size:0.8rem;color:var(--text-muted);">
+                ℹ️ Supported: Pixeldrain · MEGA · GoFile · MediaFire · WeTransfer · Catbox · Imgur
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group" style="margin-bottom:1rem">
-                <label class="form-label">RAM Memory</label>
-                <input type="text" id="sysRAM" class="form-input" placeholder="e.g. 8 GB">
+
+            <!-- Cover Image URL -->
+            <div class="form-group">
+              <label class="form-label">Cover Image URL <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+              <input type="url" id="gameImageUrl" class="form-input" placeholder="https://example.com/game-cover.jpg" autocomplete="off">
+              <div style="font-size:0.78rem;color:var(--text-muted);margin-top:5px">
+                🖼️ Paste any public image URL. Leave blank to auto-use category cover.
               </div>
-              <div class="form-group" style="margin-bottom:1rem">
-                <label class="form-label">Graphics Card (GPU)</label>
-                <input type="text" id="sysGPU" class="form-input" placeholder="e.g. NVIDIA GTX 660 2GB">
+              <div id="imagePreview" style="margin-top:0.8rem;display:none">
+                <img id="previewImg" src="" alt="Preview" style="max-height:160px;border-radius:6px;border:1px solid var(--border-color);">
               </div>
             </div>
-            <div class="form-group" style="margin-bottom:0">
-              <label class="form-label">Storage Space</label>
-              <input type="text" id="sysStorage" class="form-input" placeholder="e.g. 72 GB HDD">
+
+            <!-- Description -->
+            <div class="form-group">
+              <label class="form-label">Game Description <span class="required">*</span></label>
+              <textarea id="gameDesc" class="form-textarea" placeholder="Write a short description of the game..." required maxlength="500"></textarea>
             </div>
+
+            <!-- System Requirements -->
+            <div style="background:var(--bg-dark);border:1px solid var(--border-color);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;">
+              <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-yellow);margin-bottom:1.2rem;text-transform:uppercase;letter-spacing:1px;">
+                ⚙️ System Requirements (Optional)
+              </div>
+              <div class="form-row">
+                <div class="form-group" style="margin-bottom:1rem">
+                  <label class="form-label">Operating System</label>
+                  <input type="text" id="sysOS" class="form-input" placeholder="e.g. Windows 10 64-bit" maxlength="80">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem">
+                  <label class="form-label">Processor (CPU)</label>
+                  <input type="text" id="sysCPU" class="form-input" placeholder="e.g. Intel Core i5-3470" maxlength="80">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group" style="margin-bottom:1rem">
+                  <label class="form-label">RAM Memory</label>
+                  <input type="text" id="sysRAM" class="form-input" placeholder="e.g. 8 GB" maxlength="20">
+                </div>
+                <div class="form-group" style="margin-bottom:1rem">
+                  <label class="form-label">Graphics Card (GPU)</label>
+                  <input type="text" id="sysGPU" class="form-input" placeholder="e.g. NVIDIA GTX 660 2GB" maxlength="80">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label">Storage Space</label>
+                <input type="text" id="sysStorage" class="form-input" placeholder="e.g. 72 GB HDD" maxlength="30">
+              </div>
+            </div>
+
+            <!-- Trending -->
+            <div class="form-group" style="display:flex;align-items:center;gap:12px;">
+              <input type="checkbox" id="gameTrending" style="width:18px;height:18px;cursor:pointer;accent-color:var(--neon-green)">
+              <label for="gameTrending" style="cursor:pointer;font-size:0.9rem;color:var(--text-white);">
+                🔥 Mark as Trending Game
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:15px;">
+              📤 Add Game to RG Gamers
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div style="border-top:1px solid var(--border-color);margin:3rem 0;position:relative;">
+            <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg-dark);padding:0 1rem;color:var(--text-muted);font-size:0.85rem;">
+              MANAGE GAMES
+            </span>
           </div>
 
-          <!-- Trending checkbox -->
-          <div class="form-group" style="display:flex;align-items:center;gap:12px;">
-            <input type="checkbox" id="gameTrending" style="width:18px;height:18px;cursor:pointer;accent-color:var(--neon-green)">
-            <label for="gameTrending" style="cursor:pointer;font-size:0.9rem;color:var(--text-white);">
-              🔥 Mark as Trending Game
-            </label>
+          <div class="admin-header">
+            <div style="font-size:1.5rem">🎮</div>
+            <h1>Your Games</h1>
           </div>
 
-          <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:15px;">
-            📤 Add Game to RG Gamers
-          </button>
-        </form>
+          <div id="adminGamesList"></div>
 
-        <!-- Divider -->
-        <div style="border-top:1px solid var(--border-color);margin:3rem 0;position:relative;">
-          <span style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--bg-dark);padding:0 1rem;color:var(--text-muted);font-size:0.85rem;">
-            MANAGE GAMES
-          </span>
+          <!-- Logout button -->
+          <div style="text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border-color);">
+            <button onclick="sessionStorage.removeItem('rg_admin_auth');location.reload();"
+              style="background:transparent;border:1px solid var(--neon-pink);color:var(--neon-pink);padding:8px 20px;border-radius:5px;font-family:var(--font-title);font-size:0.75rem;letter-spacing:1px;cursor:pointer;transition:all 0.3s"
+              onmouseover="this.style.background='var(--neon-pink)';this.style.color='var(--bg-dark)'"
+              onmouseout="this.style.background='transparent';this.style.color='var(--neon-pink)'">
+              🔒 LOCK PANEL
+            </button>
+          </div>
+
         </div>
+      </section>
+    </main>
 
-        <!-- Admin games list -->
-        <div class="admin-header">
-          <div style="font-size:1.5rem">🎮</div>
-          <h1>Your Games</h1>
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">🎮 RG <span>Gamers</span></div>
+          <p class="footer-desc">Admin Panel — Managed by Rohit Gaikwad.</p>
         </div>
-
-        <div id="adminGamesList"></div>
-
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">🏠 Home</a></li>
+            <li><a href="games.html">🎮 All Games</a></li>
+          </ul>
+        </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">🎮 RG <span>Gamers</span></div>
-        <p class="footer-desc">Admin Panel — Managed by Rohit Gaikwad.</p>
+      <div class="footer-bottom">
+        <p>© 2025 <span>RG Gamers</span> Admin Panel 🎮</p>
+        <p style="color:var(--text-muted);font-size:0.75rem">🔒 Secured · Authorized access only</p>
       </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="../index.html">🏠 Home</a></li>
-          <li><a href="games.html">🎮 All Games</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 <span>RG Gamers</span> Admin Panel 🎮</p>
-    </div>
-  </footer>
+    </footer>
 
-  <div class="toast" id="toast"><span class="toast-icon">✅</span><span class="toast-text"></span></div>
-  <button class="scroll-top" id="scrollTop">⬆</button>
+    <div class="toast" id="toast"><span class="toast-icon">✅</span><span class="toast-text"></span></div>
+    <button class="scroll-top" id="scrollTop">⬆</button>
+
+  </div><!-- end #adminContent -->
+
   <script src="../js/main.js"></script>
 </body>
 </html>
