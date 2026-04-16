@@ -1617,3 +1617,264 @@ body::before {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ========================================
+   RG GAMERS v3 — NEW ADDITIONS
+   Multi-host · Security · Logo · UX
+   ======================================== */
+
+/* --- WEBSITE LOGO IMAGE --- */
+.logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+}
+
+/* --- HOST BADGES --- */
+.host-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--host-color, #7878aa);
+  color: var(--host-color, #7878aa);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--host-color, #7878aa) 30%, transparent);
+  white-space: nowrap;
+}
+
+.host-pixeldrain  { --host-color: #00c3ff; }
+.host-mega        { --host-color: #d4364e; }
+.host-gofile      { --host-color: #4caf50; }
+.host-mediafire   { --host-color: #ff6600; }
+.host-wetransfer  { --host-color: #0078ff; }
+.host-catbox      { --host-color: #9b59b6; }
+.host-imgur       { --host-color: #85bf25; }
+.host-external    { --host-color: #7878aa; }
+
+/* Host row in game cards */
+.card-host-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Host detector in admin form */
+#hostDetector {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  min-height: 1.2rem;
+  transition: all 0.3s;
+}
+
+/* Download modal host display */
+#dlGameHost {
+  font-size: 0.85rem;
+  color: var(--neon-blue);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+}
+
+/* --- ADMIN LOCK SCREEN --- */
+#adminLockScreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 12, 0.97);
+  backdrop-filter: blur(16px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#adminLockBox {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-pink);
+  border-radius: 14px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255,0,119,0.2);
+}
+
+#adminLockBox .lock-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+#adminLockBox h2 {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--neon-pink);
+  margin-bottom: 0.4rem;
+  text-shadow: var(--glow-pink);
+}
+
+#adminLockBox p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+#adminPassInput {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--text-white);
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s;
+}
+
+#adminPassInput:focus {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 12px rgba(255,0,119,0.25);
+  outline: none;
+}
+
+#adminUnlockBtn {
+  width: 100%;
+  padding: 12px;
+  background: var(--neon-pink);
+  color: var(--bg-dark);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(255,0,119,0.3);
+}
+
+#adminUnlockBtn:hover {
+  box-shadow: 0 0 30px rgba(255,0,119,0.6);
+  transform: translateY(-2px);
+}
+
+#adminPassError {
+  color: var(--neon-pink);
+  font-size: 0.82rem;
+  margin-top: 0.8rem;
+  display: none;
+  font-family: var(--font-mono);
+}
+
+/* Shake animation for wrong password */
+@keyframes adminShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10px); }
+  40%       { transform: translateX(10px); }
+  60%       { transform: translateX(-8px); }
+  80%       { transform: translateX(8px); }
+}
+#adminLockBox.shake {
+  animation: adminShake 0.45s ease;
+}
+
+/* Admin lock screen grid background */
+#adminLockScreen::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,0,119,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,119,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#adminLockBox { position: relative; z-index: 1; }
+
+/* --- MULTI-HOST ADMIN GUIDE --- */
+.host-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.host-guide-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.host-guide-item:hover { transform: translateY(-1px); }
+.host-guide-item.pixeldrain  { color:#00c3ff; border-color:rgba(0,195,255,0.3); background:rgba(0,195,255,0.05); }
+.host-guide-item.mega        { color:#d4364e; border-color:rgba(212,54,78,0.3);  background:rgba(212,54,78,0.05); }
+.host-guide-item.gofile      { color:#4caf50; border-color:rgba(76,175,80,0.3);  background:rgba(76,175,80,0.05); }
+.host-guide-item.mediafire   { color:#ff6600; border-color:rgba(255,102,0,0.3);  background:rgba(255,102,0,0.05); }
+.host-guide-item.wetransfer  { color:#0078ff; border-color:rgba(0,120,255,0.3);  background:rgba(0,120,255,0.05); }
+.host-guide-item.catbox      { color:#9b59b6; border-color:rgba(155,89,182,0.3); background:rgba(155,89,182,0.05); }
+.host-guide-item.imgur       { color:#85bf25; border-color:rgba(133,191,37,0.3); background:rgba(133,191,37,0.05); }
+
+/* --- SECURITY: Content visibility for admin --- */
+#adminContent { display: none; }
+
+/* --- GAME COVER: Enhanced image container --- */
+.card-image {
+  background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+}
+
+/* Category-color top border on hover */
+.game-card:hover {
+  box-shadow: 0 8px 30px rgba(0,255,136,0.15), 0 0 0 1px var(--neon-green);
+}
+
+/* Improved image load animation */
+.card-image img {
+  animation: imgFadeIn 0.4s ease;
+}
+@keyframes imgFadeIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* --- SECURITY: External link indicator --- */
+a[target="_blank"]:not(.btn):not(.card-download-btn):not(.btn-admin-nav)::after {
+  content: ' ↗';
+  font-size: 0.75em;
+  opacity: 0.5;
+}
+
+/* --- DOWNLOAD MODAL: Host info row --- */
+.download-modal {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+/* --- Responsive for lock screen --- */
+@media (max-width: 480px) {
+  #adminLockBox { padding: 2rem 1.2rem; margin: 0 1rem; }
+}
