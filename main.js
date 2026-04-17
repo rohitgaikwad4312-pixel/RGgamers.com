@@ -186,7 +186,7 @@ const DEFAULT_GAMES = [
     category: 'Action',
     description: 'Experience the sprawling open world of Los Santos. Complete missions, explore the city, and cause chaos in one of the best open-world games ever made.',
     size: '65 GB',
-    image: 'https://i.postimg.cc/NfxLbhTJ/Screenshot-2026-04-17-175013.png',
+    image: '<a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/1zXgfW8J/Screenshot-2026-04-17-195313.png' border='0' alt='Screenshot-2026-04-17-195313'></a>',
     downloadUrl: 'https://mega.nz/folder/r6Q3kARI#2Ml9zo7PXAdDtoQUcxGvxw',
     host: 'mega',
     sysReq: {
