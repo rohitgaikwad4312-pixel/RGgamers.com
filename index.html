@@ -10,12 +10,23 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>RG Gamers - Download PC Games Free</title>
 
-  <!-- ✅ CORRECT PATH: style.css is in the SAME folder as index.html -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ FIX: Better image handling -->
+  <style>
+    .game-card img,
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  </style>
 </head>
+
 <body data-page="home">
 
-  <!-- ====== NAVBAR ====== -->
+  <!-- NAVBAR (same) -->
   <nav class="navbar">
     <a href="index.html" class="logo">
       <span class="logo-icon">🎮</span>
@@ -41,223 +52,70 @@
     </div>
   </nav>
 
-  <!-- ====== MAIN CONTENT ====== -->
+  <!-- MAIN -->
   <main class="main-content">
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
         <div class="hero-badge">🎮 FREE PC GAME DOWNLOADS — MULTI-HOST</div>
+
         <h1>
           Download <span class="highlight-green">PC Games</span><br>
           in <span class="highlight-blue">WinRAR</span> Format
         </h1>
+
         <p>
-          Welcome to RG Gamers — your go-to source for free PC game downloads.
-          Games hosted on Pixeldrain, MEGA, GoFile, MediaFire and more.
+          Welcome to RG Gamers — download games with working cover images and fast links.
         </p>
+
         <div class="hero-buttons">
-          <a href="games.html" class="btn btn-primary">🎮 Browse All Games</a>
+          <a href="games.html" class="btn btn-primary">🎮 Browse Games</a>
           <a href="categories.html" class="btn btn-outline">📂 Categories</a>
         </div>
-
-        <!-- Supported hosts strip -->
-        <div style="display:flex;justify-content:center;gap:0.7rem;flex-wrap:wrap;margin-top:1.5rem;">
-          <span class="host-badge host-pixeldrain">☁️ Pixeldrain</span>
-          <span class="host-badge host-mega">🔷 MEGA</span>
-          <span class="host-badge host-gofile">📁 GoFile</span>
-          <span class="host-badge host-mediafire">🔥 MediaFire</span>
-          <span class="host-badge host-wetransfer">💧 WeTransfer</span>
-          <span class="host-badge host-catbox">📦 Catbox</span>
-          <span class="host-badge host-imgur">🖼️ Imgur</span>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-number" id="totalGames">6+</div>
-            <div class="stat-label">Games Available</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">100K+</div>
-            <div class="stat-label">Total Downloads</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">RAR</div>
-            <div class="stat-label">File Format</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">FREE</div>
-            <div class="stat-label">Always</div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- FEATURED GAME SECTION -->
+    <!-- FEATURED -->
     <section class="section">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-title">⭐ <span class="accent">Featured</span> Game</div>
-            <div class="section-line"></div>
-          </div>
-        </div>
-        <div class="featured-game" id="featuredGame">
-          <div style="grid-column:1/-1; padding:3rem; text-align:center; color:var(--text-muted)">
-            Loading featured game...
-          </div>
-        </div>
+        <div class="section-title">⭐ Featured Game</div>
+        <div class="featured-game" id="featuredGame"></div>
       </div>
     </section>
 
-    <!-- TRENDING GAMES SECTION -->
-    <section class="section" style="padding-top:0">
+    <!-- TRENDING -->
+    <section class="section">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-title">🔥 <span class="accent">Trending</span> Games</div>
-            <div class="section-line"></div>
-          </div>
-          <a href="games.html" class="view-all">View All →</a>
-        </div>
+        <div class="section-title">🔥 Trending Games</div>
         <div class="games-grid" id="trendingGames"></div>
       </div>
     </section>
 
-    <!-- CATEGORIES QUICK LINKS -->
-    <section class="section" style="padding-top:0">
+    <!-- RECENT -->
+    <section class="section">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-title">📂 <span class="accent">Browse</span> By Category</div>
-            <div class="section-line"></div>
-          </div>
-          <a href="categories.html" class="view-all">All Categories →</a>
-        </div>
-        <div class="categories-grid">
-          <a class="category-card" href="games.html?category=Action"><span class="category-icon">⚔️</span><div class="category-name">Action</div></a>
-          <a class="category-card" href="games.html?category=Racing"><span class="category-icon">🏎️</span><div class="category-name">Racing</div></a>
-          <a class="category-card" href="games.html?category=Shooting"><span class="category-icon">🔫</span><div class="category-name">Shooting</div></a>
-          <a class="category-card" href="games.html?category=Adventure"><span class="category-icon">🗺️</span><div class="category-name">Adventure</div></a>
-          <a class="category-card" href="games.html?category=Sports"><span class="category-icon">⚽</span><div class="category-name">Sports</div></a>
-          <a class="category-card" href="games.html?category=RPG"><span class="category-icon">🧙</span><div class="category-name">RPG</div></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- RECENTLY UPLOADED GAMES -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-title">🆕 <span class="accent">Recently</span> Uploaded</div>
-            <div class="section-line"></div>
-          </div>
-          <a href="games.html" class="view-all">View All →</a>
-        </div>
+        <div class="section-title">🆕 Recent Games</div>
         <div class="games-grid" id="recentGames"></div>
-      </div>
-    </section>
-
-    <!-- HOW TO DOWNLOAD SECTION -->
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-title">📋 <span class="accent">How</span> To Download</div>
-            <div class="section-line"></div>
-          </div>
-        </div>
-        <div class="about-features">
-          <div class="feature-card">
-            <div class="feature-icon">🔍</div>
-            <div class="feature-title">1. Find Your Game</div>
-            <div class="feature-text">Browse our game library or use the search bar to find the game you want to download.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📄</div>
-            <div class="feature-title">2. View Details</div>
-            <div class="feature-text">Click on any game card to see full details, system requirements, and file size.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">⬇️</div>
-            <div class="feature-title">3. Click Download</div>
-            <div class="feature-text">Hit the Download button. You'll be redirected to Pixeldrain, MEGA, GoFile or your chosen host to download the .rar file.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📦</div>
-            <div class="feature-title">4. Extract & Play</div>
-            <div class="feature-text">Use WinRAR to extract the downloaded file, then install and enjoy your game!</div>
-          </div>
-        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ====== FOOTER ====== -->
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">🎮 RG <span>Gamers</span></div>
-        <p class="footer-desc">Your number one source for free PC game downloads in WinRAR format. Hosted on Pixeldrain, MEGA, GoFile, MediaFire and more. Fast, safe, always free.</p>
-        <p style="font-size:0.75rem;color:var(--text-muted)">Owner: Rohit Gaikwad</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">🏠 Home</a></li>
-          <li><a href="games.html">🎮 All Games</a></li>
-          <li><a href="categories.html">📂 Categories</a></li>
-          <li><a href="admin.html">⚙️ Admin Panel</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Categories</h4>
-        <ul class="footer-links">
-          <li><a href="games.html?category=Action">⚔️ Action</a></li>
-          <li><a href="games.html?category=Racing">🏎️ Racing</a></li>
-          <li><a href="games.html?category=Shooting">🔫 Shooting</a></li>
-          <li><a href="games.html?category=Adventure">🗺️ Adventure</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <ul class="footer-links">
-          <li><a href="about.html">ℹ️ About Us</a></li>
-          <li><a href="contact.html">📧 Contact</a></li>
-        </ul>
-        <div style="margin-top:1rem;font-size:0.78rem;color:var(--text-muted)">
-          📧 rohit.gaikwad4312@gmail.com<br>
-          📱 9975994312
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 <span>RG Gamers</span> — Owner: Rohit Gaikwad 🎮</p>
-      <p style="color:var(--text-muted);font-size:0.75rem">All files are for educational purposes only.</p>
-    </div>
+    <p>© 2025 RG Gamers</p>
   </footer>
 
-  <!-- ====== DOWNLOAD MODAL ====== -->
+  <!-- DOWNLOAD MODAL -->
   <div class="download-overlay" id="downloadOverlay">
     <div class="download-modal">
-      <div class="download-icon">⬇️</div>
-      <h3>Preparing Download</h3>
-      <p id="dlGameName" style="font-family:var(--font-title);color:var(--neon-green);margin-bottom:0.3rem">Game Name</p>
-      <p style="color:var(--neon-yellow);font-family:var(--font-mono);font-size:0.85rem;margin-bottom:0.3rem">
-        File Size: <span id="dlGameSize">-</span>
-      </p>
-      <p id="dlGameHost" style="font-size:0.8rem;color:var(--neon-blue);margin-bottom:0.8rem">☁️ Detecting host…</p>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="progress-text">Redirecting to file host...</div>
+      <h3>Preparing Download...</h3>
     </div>
   </div>
 
-  <button class="scroll-top" id="scrollTop" title="Scroll to top">⬆</button>
-  <div class="toast" id="toast"><span class="toast-icon">✅</span><span class="toast-text"></span></div>
-
-  <!-- ✅ CORRECT PATH: main.js is in the SAME folder as index.html -->
+  <!-- JS -->
   <script src="main.js"></script>
+
 </body>
 </html>
