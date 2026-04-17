@@ -82,7 +82,7 @@ function isValidDownloadUrl(url) {
 // =========================================
 
 const ADMIN_PASS_KEY = 'rg_admin_auth';
-const ADMIN_PASSWORD  = 'RGAdmin2025'; // ← Change this to your preferred password
+const ADMIN_PASSWORD  = '95112311699921864312'; // ← Change this to your preferred password
 
 function isAdminAuthenticated() {
   return sessionStorage.getItem(ADMIN_PASS_KEY) === 'ok';
