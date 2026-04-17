@@ -166,7 +166,7 @@ const DEFAULT_GAMES = [
     category: 'Simulator',
     description: 'A flexible software sketchbook and a language for learning how to code within the context of the visual arts. Built on Java, highly efficient for data processing and visual synthesis.',
     size: '111 MB',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Processing_I3-3.5.4.png',
+    image:'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Processing_logo.png/220px-Processing_logo.png',
     downloadUrl: 'https://pixeldrain.com/u/4Bk9SWp6',
     host: 'pixeldrain',
     sysReq: {
@@ -186,7 +186,7 @@ const DEFAULT_GAMES = [
     category: 'Action',
     description: 'Experience the sprawling open world of Los Santos. Complete missions, explore the city, and cause chaos in one of the best open-world games ever made.',
     size: '65 GB',
-    image: 'https://commons.wikimedia.org/wiki/File:Grand_Theft_Auto_Five.png',
+    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/GTA_V.png/220px-GTA_V.png',
     downloadUrl: 'https://mega.nz/folder/r6Q3kARI#2Ml9zo7PXAdDtoQUcxGvxw',
     host: 'mega',
     sysReq: {
