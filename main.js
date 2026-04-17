@@ -166,7 +166,7 @@ const DEFAULT_GAMES = [
     category: 'Simulator',
     description: 'A flexible software sketchbook and a language for learning how to code within the context of the visual arts. Built on Java, highly efficient for data processing and visual synthesis.',
     size: '111 MB',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Processing_2021_logo.svg/512px-Processing_2021_logo.svg.png',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Processing_I3-3.5.4.png',
     downloadUrl: 'https://pixeldrain.com/u/4Bk9SWp6',
     host: 'pixeldrain',
     sysReq: {
