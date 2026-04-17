@@ -82,7 +82,7 @@ function isValidDownloadUrl(url) {
 // =========================================
 
 const ADMIN_PASS_KEY = 'rg_admin_auth';
-const ADMIN_PASSWORD  = '95112311699921864312'; // ← Change this to your preferred password
+const ADMIN_PASSWORD  = 'RGAdmin2025'; // ← Change this to your preferred password
 
 function isAdminAuthenticated() {
   return sessionStorage.getItem(ADMIN_PASS_KEY) === 'ok';
@@ -152,11 +152,7 @@ const CATEGORY_COVERS = {
 };
 
 function getGameImage(game) {
-  if (game.image && game.image.startsWith('http')) {
-    return game.image;
-  }
-  return CATEGORY_COVERS[game.category] || 'images/placeholder.jpg';
-}
+  return game.image || CATEGORY_COVERS[game.category] || '../images/placeholder.jpg';
 }
 
 // =========================================
