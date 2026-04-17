@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Security Headers via Meta -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="robots" content="noindex, nofollow">
   <title>Admin Panel - RG Gamers</title>
-  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- ✅ CORRECT PATH: style.css is in the SAME folder -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="admin">
 
@@ -22,8 +22,8 @@
       <input type="password" id="adminPassInput" placeholder="••••••••••••" autocomplete="off" spellcheck="false">
       <button id="adminUnlockBtn">🔓 UNLOCK PANEL</button>
       <div id="adminPassError"></div>
-      <p style="margin-top:1.5rem;font-size:0.75rem;color:#333">
-        🛡️ This panel is protected · Unauthorized access prohibited
+      <p style="margin-top:1.5rem;font-size:0.75rem;color:#555">
+        🛡️ Authorized access only
       </p>
     </div>
   </div>
@@ -32,12 +32,11 @@
   <div id="adminContent">
 
     <nav class="navbar">
-      <a href="../index.html" class="logo">
-        <img src="../images/logo.svg" alt="RG Gamers" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <span style="display:none"><span class="logo-icon">🎮</span>RG <span>Gamers</span></span>
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🎮</span>RG <span>Gamers</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="games.html">Games</a></li>
         <li><a href="categories.html">Categories</a></li>
         <li><a href="about.html">About</a></li>
@@ -50,7 +49,7 @@
     <main class="main-content">
 
       <div class="page-header" style="background:linear-gradient(180deg,rgba(255,0,119,0.06),transparent);">
-        <div class="breadcrumb"><a href="../index.html">Home</a><span>›</span><span style="color:var(--neon-pink)">Admin Panel</span></div>
+        <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span style="color:var(--neon-pink)">Admin Panel</span></div>
         <h1>⚙️ <span style="color:var(--neon-pink)">Admin</span> Panel</h1>
         <p>Upload and manage games on RG Gamers · Owner: Rohit Gaikwad</p>
       </div>
@@ -61,7 +60,7 @@
           <!-- SUPPORTED HOSTS GUIDE -->
           <div style="background:rgba(0,195,255,0.05);border:1px solid rgba(0,195,255,0.3);border-radius:10px;padding:1.5rem;margin-bottom:2rem;">
             <div style="font-family:var(--font-title);font-size:0.85rem;color:var(--neon-blue);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px;">
-              ☁️ Supported Download Hosts — Pick Any
+              ☁️ Supported Download Hosts — Paste Any Link
             </div>
             <div class="host-guide-grid">
               <div class="host-guide-item pixeldrain">☁️ Pixeldrain</div>
@@ -74,12 +73,11 @@
             </div>
             <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;font-size:0.82rem;color:var(--text-muted);">
               <div><strong style="color:var(--neon-blue)">Pixeldrain</strong> — pixeldrain.com/u/xxxxx</div>
-              <div><strong style="color:#d4364e">MEGA</strong> — mega.nz/file/xxxxx or mega.nz/folder/xxxx</div>
+              <div><strong style="color:#d4364e">MEGA</strong> — mega.nz/file/xxx or mega.nz/folder/xxx</div>
               <div><strong style="color:#4caf50">GoFile</strong> — gofile.io/d/xxxxx</div>
               <div><strong style="color:#ff6600">MediaFire</strong> — mediafire.com/file/xxxx</div>
               <div><strong style="color:#0078ff">WeTransfer</strong> — wetransfer.com/downloads/xxxx</div>
               <div><strong style="color:#9b59b6">Catbox</strong> — catbox.moe/xxxxx</div>
-              <div><strong style="color:#85bf25">Imgur</strong> — imgur.com/xxxxx (for images/covers)</div>
             </div>
           </div>
 
@@ -107,13 +105,11 @@
 
           <form class="admin-form" id="adminForm">
 
-            <!-- Game Title -->
             <div class="form-group">
               <label class="form-label">Game Title <span class="required">*</span></label>
               <input type="text" id="gameTitle" class="form-input" placeholder="e.g. Grand Theft Auto V" required maxlength="100">
             </div>
 
-            <!-- Category & Size Row -->
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Category <span class="required">*</span></label>
@@ -139,16 +135,14 @@
               </div>
             </div>
 
-            <!-- DOWNLOAD URL — MULTI-HOST -->
+            <!-- DOWNLOAD URL -->
             <div class="form-group">
               <label class="form-label">
                 ☁️ Download URL <span class="required">*</span>
-                <span style="font-size:0.72rem;color:var(--text-muted);font-weight:400;font-family:var(--font-body);text-transform:none;letter-spacing:0">(Pixeldrain, MEGA, GoFile, MediaFire, WeTransfer, Catbox, Imgur)</span>
               </label>
               <input type="url" id="gameDownloadUrl" class="form-input"
-                placeholder="https://pixeldrain.com/u/xxxxxxxx  or  https://mega.nz/file/xxxxx" required
-                style="border-color:var(--neon-blue)" autocomplete="off">
-              <!-- Live host detector -->
+                placeholder="https://pixeldrain.com/u/xxxxxxxx  or  https://mega.nz/file/xxxxx"
+                required style="border-color:var(--neon-blue)" autocomplete="off">
               <div id="hostDetector" style="margin-top:5px;font-size:0.8rem;color:var(--text-muted);">
                 ℹ️ Supported: Pixeldrain · MEGA · GoFile · MediaFire · WeTransfer · Catbox · Imgur
               </div>
@@ -159,7 +153,7 @@
               <label class="form-label">Cover Image URL <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
               <input type="url" id="gameImageUrl" class="form-input" placeholder="https://example.com/game-cover.jpg" autocomplete="off">
               <div style="font-size:0.78rem;color:var(--text-muted);margin-top:5px">
-                🖼️ Paste any public image URL. Leave blank to auto-use category cover.
+                🖼️ Leave blank to auto-use a category cover image.
               </div>
               <div id="imagePreview" style="margin-top:0.8rem;display:none">
                 <img id="previewImg" src="" alt="Preview" style="max-height:160px;border-radius:6px;border:1px solid var(--border-color);">
@@ -230,7 +224,7 @@
 
           <div id="adminGamesList"></div>
 
-          <!-- Logout button -->
+          <!-- Logout -->
           <div style="text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border-color);">
             <button onclick="sessionStorage.removeItem('rg_admin_auth');location.reload();"
               style="background:transparent;border:1px solid var(--neon-pink);color:var(--neon-pink);padding:8px 20px;border-radius:5px;font-family:var(--font-title);font-size:0.75rem;letter-spacing:1px;cursor:pointer;transition:all 0.3s"
@@ -253,14 +247,14 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="../index.html">🏠 Home</a></li>
+            <li><a href="index.html">🏠 Home</a></li>
             <li><a href="games.html">🎮 All Games</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>© 2025 <span>RG Gamers</span> Admin Panel 🎮</p>
-        <p style="color:var(--text-muted);font-size:0.75rem">🔒 Secured · Authorized access only</p>
+        <p style="color:var(--text-muted);font-size:0.75rem">🔒 Authorized access only</p>
       </div>
     </footer>
 
@@ -269,6 +263,7 @@
 
   </div><!-- end #adminContent -->
 
-  <script src="../js/main.js"></script>
+  <!-- ✅ CORRECT PATH: main.js is in the SAME folder -->
+  <script src="main.js"></script>
 </body>
 </html>
