@@ -186,7 +186,7 @@ const DEFAULT_GAMES = [
     category: 'Action',
     description: 'Experience the sprawling open world of Los Santos. Complete missions, explore the city, and cause chaos in one of the best open-world games ever made.',
     size: '65 GB',
-    image: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/GTA_V.png/220px-GTA_V.png',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Grand_Theft_Auto_Five.png,https://i.postimg.cc/1zXgfW8J/Screenshot-2026-04-17-195313.png',
     downloadUrl: 'https://mega.nz/folder/r6Q3kARI#2Ml9zo7PXAdDtoQUcxGvxw',
     host: 'mega',
     sysReq: {
