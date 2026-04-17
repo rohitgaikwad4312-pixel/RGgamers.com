@@ -1,4 +1,3 @@
-<! DOCTYPE main.js>
 /* =========================================
    RG GAMERS — Main JavaScript v4
    Owner: Rohit Gaikwad
@@ -6,79 +5,6 @@
    ========================================= */
 
 'use strict';
-'use strict';
-
-// 1. Database Initialization
-const DEFAULT_GAMES = [
-    {
-        id: "1",
-        title: "Grand Theft Auto V",
-        category: "Action",
-        image: "https://images.alphacoders.com/451/451156.jpg",
-        description: "An action-adventure game set in Los Santos.",
-        links: { pixeldrain: "https://pixeldrain.com/u/example" },
-        trending: true,
-        date: "2024-01-01"
-    }
-];
-
-function getDB() {
-    const data = localStorage.getItem('RG_GAMES_DB');
-    if (!data) {
-        localStorage.setItem('RG_GAMES_DB', JSON.stringify(DEFAULT_GAMES));
-        return DEFAULT_GAMES;
-    }
-    return JSON.parse(data);
-}
-
-// 2. Rendering Engine (Fixed for Root Folder)
-function renderGameGrid(gameList, container) {
-    if (!container) return;
-    
-    // Since all your files are in the root, we don't need "../"
-    container.innerHTML = gameList.map(game => `
-        <div class="game-card">
-            <div class="card-image">
-                <img src="${game.image}" alt="${game.title}" onerror="this.src='placeholder.jpg'">
-            </div>
-            <div class="card-body">
-                <h4>${game.title}</h4>
-                <p class="category">${game.category}</p>
-                <a href="game-detail.html?id=${game.id}" class="btn-sm">View Details</a>
-            </div>
-        </div>
-    `).join('');
-}
-
-// 3. Page Logic
-function initHomePage() {
-    const games = getDB();
-    const trending = games.filter(g => g.trending);
-    const recent = [...games].sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    renderGameGrid(trending, document.getElementById('trendingGames'));
-    renderGameGrid(recent, document.getElementById('recentGames'));
-    
-    const featured = games[0];
-    const featCont = document.getElementById('featuredGame');
-    if (featCont && featured) {
-        featCont.innerHTML = `<img src="${featured.image}" style="width:100%; border-radius:10px;">`;
-    }
-}
-
-function initGamesPage() {
-    renderGameGrid(getDB(), document.getElementById('allGamesGrid'));
-}
-
-// 4. Bootstrapper
-document.addEventListener('DOMContentLoaded', () => {
-    const pageId = document.body.getAttribute('data-page');
-    console.log("Page Loaded:", pageId); // Debugging
-
-    if (pageId === 'home') initHomePage();
-    if (pageId === 'games') initGamesPage();
-    // Add other page inits as needed
-});
 
 /* =========================================
    SECTION 1 — SECURITY UTILITIES
