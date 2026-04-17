@@ -132,11 +132,15 @@ const CATEGORY_COVERS = {
  */
 function getGameImage(game) {
   if (game.image) {
-    // Support comma-separated image list — use the first entry
     const first = game.image.split(',')[0].trim();
-    if (first) return first;
+
+    // ✅ sanitize + validate URL
+    const clean = sanitizeUrl(first);
+    if (clean) return clean;
   }
-  return CATEGORY_COVERS[game.category] || '../images/placeholder.jpg';
+
+  // ✅ fallback (always valid)
+  return CATEGORY_COVERS[game.category] || 'images/placeholder.jpg';
 }
 
 /**
@@ -411,7 +415,7 @@ function slugify(text) {
  */
 function createGameCard(game, basePath = '') {
   const imgSrc    = escHtml(getGameImage(game));
-  const fallback  = basePath + 'images/placeholder.jpg';
+  const fallback = basePath + 'images/placeholder.jpg';
   const detailUrl = basePath + 'pages/game-detail.html?id=' + encodeURIComponent(game.id);
   const hostInfo  = detectHost(game.downloadUrl);
   const hostIcon  = hostInfo ? hostInfo.icon  : '☁️';
@@ -421,7 +425,7 @@ function createGameCard(game, basePath = '') {
     <div class="game-card">
       <div class="card-image">
         <img src="${imgSrc}" alt="${escHtml(game.title)}"
-          onerror="this.onerror=null;this.src='${escHtml(fallback)}'"
+         onerror="this.onerror=null;this.src='${escHtml(fallback)}';this.style.objectFit='contain'"
           loading="lazy">
         <div class="card-badge">${escHtml(game.category)}</div>
         ${game.trending ? '<div class="badge-trending">🔥 Hot</div>' : ''}
@@ -692,7 +696,7 @@ function initHomePage() {
     featuredEl.innerHTML = `
       <div class="featured-image">
         <img src="${escHtml(getGameImage(featured))}" alt="${escHtml(featured.title)}"
-          onerror="this.onerror=null;this.src='images/placeholder.jpg'">
+          onerror="this.onerror=null;this.src='${basePath}images/placeholder.jpg'">
       </div>
       <div class="featured-info">
         <div class="featured-category">⭐ Featured Game</div>
