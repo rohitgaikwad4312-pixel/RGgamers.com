@@ -149,7 +149,7 @@ function getGameImage(game) {
  * @returns {string[]}
  */
 function getGameImages(game) {
-  if (!game.image) return [CATEGORY_COVERS[game.category] || '../images/placeholder.jpg'];
+  if (!game.image) return [CATEGORY_COVERS[game.category] || 'images/placeholder.jpg'];
   return game.image.split(',').map(u => u.trim()).filter(Boolean);
 }
 
@@ -305,7 +305,7 @@ const DEFAULT_GAMES = [
    localStorage wrapper with error handling
    ========================================= */
 
-const STORAGE_KEY = 'rg_games_v3';
+const STORAGE_KEY = 'rg_games_v4';
 
 /**
  * Loads all games from localStorage. Falls back to DEFAULT_GAMES.
@@ -318,7 +318,20 @@ function getGames() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(DEFAULT_GAMES));
       return DEFAULT_GAMES;
     }
-    return JSON.parse(stored);
+    const games = JSON.parse(stored);
+
+    // Sync cover images from DEFAULT_GAMES so image updates always take effect
+    let changed = false;
+    games.forEach(g => {
+      const def = DEFAULT_GAMES.find(d => d.id === g.id);
+      if (def && def.image && g.image !== def.image) {
+        g.image = def.image;
+        changed = true;
+      }
+    });
+    if (changed) localStorage.setItem(STORAGE_KEY, JSON.stringify(games));
+
+    return games;
   } catch (e) {
     console.error('[RGGamers] getGames error:', e);
     return DEFAULT_GAMES;
@@ -416,7 +429,7 @@ function slugify(text) {
 function createGameCard(game, basePath = '') {
   const imgSrc    = escHtml(getGameImage(game));
   const fallback = basePath + 'images/placeholder.jpg';
-  const detailUrl = basePath + 'pages/game-detail.html?id=' + encodeURIComponent(game.id);
+  const detailUrl = basePath + 'game-detail.html?id=' + encodeURIComponent(game.id);
   const hostInfo  = detectHost(game.downloadUrl);
   const hostIcon  = hostInfo ? hostInfo.icon  : '☁️';
   const hostLabel = hostInfo ? hostInfo.label : 'Download';
@@ -667,7 +680,7 @@ function initNavSearch(basePath = '') {
   input.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && this.value.trim()) {
       window.location.href =
-        basePath + 'pages/games.html?search=' + encodeURIComponent(this.value.trim());
+        basePath + 'games.html?search=' + encodeURIComponent(this.value.trim());
     }
   });
 }
@@ -711,7 +724,7 @@ function initHomePage() {
         <div style="display:flex;gap:1rem;flex-wrap:wrap">
           <button class="btn btn-primary"
             onclick="startDownload('${escHtml(featured.id)}','')">⬇️ Download Now</button>
-          <a href="pages/game-detail.html?id=${encodeURIComponent(featured.id)}"
+          <a href="game-detail.html?id=${encodeURIComponent(featured.id)}"
             class="btn btn-outline">📄 View Details</a>
         </div>
       </div>`;
@@ -759,7 +772,7 @@ function initGamesPage() {
   if (cat)    { currentCategory = cat;    const sel = document.getElementById('categoryFilter'); if (sel) sel.value = cat;    }
   if (search) { currentSearch   = search; const inp = document.getElementById('searchInput');    if (inp) inp.value = search; }
 
-  renderGamesGrid('gamesGrid', filterGames(), '../');
+  renderGamesGrid('gamesGrid', filterGames(), '');
 
   const searchInput = document.getElementById('searchInput');
   const catFilter   = document.getElementById('categoryFilter');
@@ -767,13 +780,13 @@ function initGamesPage() {
   if (searchInput) {
     searchInput.addEventListener('input', e => {
       currentSearch = e.target.value;
-      renderGamesGrid('gamesGrid', filterGames(), '../');
+      renderGamesGrid('gamesGrid', filterGames(), '');
     });
   }
   if (catFilter) {
     catFilter.addEventListener('change', e => {
       currentCategory = e.target.value;
-      renderGamesGrid('gamesGrid', filterGames(), '../');
+      renderGamesGrid('gamesGrid', filterGames(), '');
     });
   }
 }
@@ -850,7 +863,7 @@ function loadGameDetail() {
     <div class="game-detail-header">
       <div class="game-cover">
         <img src="${escHtml(getGameImage(game))}" alt="${escHtml(game.title)}"
-          onerror="this.onerror=null;this.src='../images/placeholder.jpg'">
+          onerror="this.onerror=null;this.src='images/placeholder.jpg'">
         ${game.trending ? '<div class="trending-badge-detail">🔥 TRENDING</div>' : ''}
       </div>
       <div class="game-info-panel">
@@ -877,7 +890,7 @@ function loadGameDetail() {
         </div>
         <div style="margin-bottom:0.8rem">${hostBadge}</div>
         <button class="btn btn-download"
-          onclick="startDownload('${escHtml(game.id)}','../')">
+          onclick="startDownload('${escHtml(game.id)}','')">
           ⬇️ DOWNLOAD — ${escHtml(game.size)}
         </button>
         <p style="color:var(--text-muted);font-size:0.78rem;margin-top:0.6rem">
@@ -1176,7 +1189,7 @@ function renderAdminList() {
     <div class="admin-game-item" id="admin_${escHtml(game.id)}">
       <img class="admin-game-thumb"
         src="${escHtml(getGameImage(game))}" alt="${escHtml(game.title)}"
-        onerror="this.onerror=null;this.style.background='var(--bg-dark)';this.src='../images/placeholder.jpg'">
+        onerror="this.onerror=null;this.style.background='var(--bg-dark)';this.src='images/placeholder.jpg'">
       <div class="admin-game-info">
         <div class="admin-game-title">${escHtml(game.title)}</div>
         <div class="admin-game-meta">
