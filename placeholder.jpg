@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#11111a"/>
-  <rect x="1" y="1" width="398" height="298" fill="none" stroke="#1e1e2e" stroke-width="2"/>
-  <text x="200" y="130" font-family="Arial" font-size="60" text-anchor="middle" fill="#1e1e2e">🎮</text>
-  <text x="200" y="175" font-family="Arial" font-size="16" text-anchor="middle" fill="#7878aa">No Image Available</text>
-  <text x="200" y="200" font-family="Arial" font-size="12" text-anchor="middle" fill="#3a3a5a">RG Gamers</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#11111a"/>
+  <text x="150" y="90" text-anchor="middle" font-family="sans-serif" font-size="40" fill="#1e1e2e">🎮</text>
+  <text x="150" y="130" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#7878aa">RG Gamers</text>
 </svg>
