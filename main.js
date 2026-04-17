@@ -1,3 +1,4 @@
+<! DOCTYPE main.js>
 /* =========================================
    RG GAMERS — Main JavaScript v4
    Owner: Rohit Gaikwad
