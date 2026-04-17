@@ -152,7 +152,11 @@ const CATEGORY_COVERS = {
 };
 
 function getGameImage(game) {
-  return game.image || CATEGORY_COVERS[game.category] || '../images/placeholder.jpg';
+  if (game.image && game.image.startsWith('http')) {
+    return game.image;
+  }
+  return CATEGORY_COVERS[game.category] || 'images/placeholder.jpg';
+}
 }
 
 // =========================================
