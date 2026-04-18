@@ -204,7 +204,7 @@ const DEFAULT_GAMES = [
     category: 'Adventure',
     description: 'Build, explore, and survive in an infinitely generated world of blocks. Mine resources, craft tools, and survive the night against monsters.',
     size: '1.2 GB',
-    image: 'https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png',
+    image: 'https://i.postimg.cc/WpML7FXQ/MINECRAFT-JAVA-BEDROCK.jpg',
     downloadUrl: 'https://pixeldrain.com/u/example2',
     host: 'pixeldrain',
     sysReq: {
@@ -224,7 +224,7 @@ const DEFAULT_GAMES = [
     category: 'Shooting',
     description: '5v5 character-based tactical shooter. Use unique agent abilities and precise gunplay to outsmart and outshoot the enemy team.',
     size: '22 GB',
-    image: 'https://upload.wikimedia.org/wikipedia/en/3/30/Valorant_logo_-_pink_color_version.png',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Valorant.jpg',
     downloadUrl: 'https://gofile.io/d/example3',
     host: 'gofile',
     sysReq: {
